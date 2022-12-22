@@ -4,6 +4,7 @@ namespace HtmlFramework;
 
 use HtmlFramework\Element as HtmlElement;
 use HtmlFramework\Packet\SectionPacket;
+use Utils\HtmlUtils;
 
 /**
  * The "section" houses the nav and acticle and allows the layout
@@ -29,5 +30,18 @@ class Section extends HtmlElement {
       ob_start();
       require $this->packet->getData('templatePath');
       return ob_get_clean();
+   }
+
+
+   protected function getCommentTableHTML(): string {
+      $comments = $this->packet->getAllComments();
+      if (!$comments) {
+         return '';
+      }
+
+      return HtmlUtils::makeTableElement([
+         'header' => array_keys($comments[0]),
+         'rows' => $comments
+      ]);
    }
 }

@@ -1,7 +1,22 @@
+.page-container {
+   max-width: 800px;
+}
+
+.body-content-container {
+   display: flex;
+   flex-direction: column;
+}
+
 h1 {
+   text-align: center;
    color: red;
 }
 
-section p {
+table {
+   width: 100%;
+}
+
+table th {
+   font-size: 1.4em;
    color: green;
 }
