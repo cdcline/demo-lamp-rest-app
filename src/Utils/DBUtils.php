@@ -23,17 +23,36 @@ class DBUtils {
       return $conn;
    }
 
-   public static function fetchUserComments(): array {
-      $allComments = <<<EOT
-         SELECT `name` as "Name", `group_name` as "Group Name", `comment` as "Comment"
-         FROM `comments`
-         JOIN `user` USING (`userid`)
-         JOIN `user_groups` USING (`groupid`);
-EOT;
-      return self::fetchRowsForQuery($allComments);
+   public static function fetchValue($sqlQuery, $params) {
+      $conn = self::fetchConn();
+      $stmt = $conn->prepare($sqlQuery);
+      $pKey = '';
+      $pValues = [];
+      foreach ($params as $param) {
+         $pKey .= $param[0];
+         $pValues[] = $param[1];
+      }
+      $stmt->bind_param($pKey, ...$pValues);
+      $stmt->execute();
+      $stmt->bind_result($result);
+      $stmt->fetch();
+      return $result;
    }
 
-   private static function fetchRowsForQuery(string $sqlQuery): array {
+   public static function insertRow($sqlQuery, $params) {
+      $conn = self::fetchConn();
+      $stmt = $conn->prepare($sqlQuery);
+      $pKey = '';
+      $pValues = [];
+      foreach ($params as $param) {
+         $pKey .= $param[0];
+         $pValues[] = $param[1];
+      }
+      $stmt->bind_param($pKey, ...$pValues);
+      $stmt->execute();
+   }
+
+   public static function fetchRowsForQuery(string $sqlQuery): array {
       $qResult = self::fetchConn()->query($sqlQuery);
       $rows = [];
 

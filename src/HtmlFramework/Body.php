@@ -3,7 +3,6 @@
 namespace HtmlFramework;
 
 use HtmlFramework\Element as HtmlElement;
-use HtmlFramework\Footer as PageFooter;
 use HtmlFramework\Header as PageHeader;
 use HtmlFramework\Packet\BodyPacket;
 use HtmlFramework\Section as PageSection;

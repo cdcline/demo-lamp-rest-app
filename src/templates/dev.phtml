@@ -1,1 +1,7 @@
 <?= $this->getCommentTableHTML() ?>
+
+<form method="POST">
+   <input name="comment[name]" type="text" placeholder="name" />
+   <input name="comment[comment]" type="text" placeholder="comment" />
+   <input type="submit" value="Make Comment" />
+</form>

@@ -4,7 +4,6 @@ namespace HtmlFramework;
 
 use HtmlFramework\Element as HtmlElement;
 use HtmlFramework\Packet\HeaderPacket;
-use Utils\HtmlUtils;
 
 /**
  * Each page has a large header with text; this is the element

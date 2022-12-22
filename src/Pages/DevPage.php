@@ -2,14 +2,19 @@
 
 namespace Pages;
 
+use DB\UserComment;
 use Pages\BasePage;
-use mysqli;
+use Utils\ServerUtils;
 
 final class DevPage extends BasePage {
    private const PAGE_TEMPLATE = 'dev.phtml';
 
    public function doStuff(): void {
-      // ToDo: Handle POST
+      if ($_POST) {
+         UserComment::saveCommentFromPost();
+         ServerUtils::reloadPage();
+         die();
+      }
    }
 
    protected function getPageTemplateName(): string {

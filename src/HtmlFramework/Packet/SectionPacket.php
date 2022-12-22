@@ -2,8 +2,8 @@
 
 namespace HtmlFramework\Packet;
 
+use DB\UserComment;
 use HtmlFramework\Packet\PacketTrait;
-use Utils\DBUtils;
 
 class SectionPacket {
    use PacketTrait;
@@ -13,6 +13,6 @@ class SectionPacket {
    }
 
    public function getAllComments(): array {
-      return DBUtils::fetchUserComments();
+      return UserComment::fetchAllComments();
    }
 }

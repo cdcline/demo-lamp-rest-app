@@ -4,19 +4,23 @@ USE `dev_db`;
 --
 -- DROP TABLE `comments`;
 -- DROP TABLE `user_groups`;
--- DROP TABLE `user`;
+-- DROP TABLE `users`;
+--
+
 --
 CREATE TABLE `user_groups` (
    `groupid` INT NOT NULL AUTO_INCREMENT,
    `group_name` VARCHAR (255),
-   PRIMARY KEY (`groupid`)
+   PRIMARY KEY (`groupid`),
+   KEY (`group_name`)
 );
 --
-CREATE TABLE `user` (
+CREATE TABLE `users` (
    `userid` INT NOT NULL AUTO_INCREMENT COMMENT 'id used to update things',
-   `groupid` INT NOT NULL COMMENT 'id used to group things',
-   `name` TEXT DEFAULT NULL COMMENT 'some data you might want',
+   `groupid` INT NOT NULL COMMENT 'id used to filter things',
+   `name` VARCHAR(255) DEFAULT NULL COMMENT 'value seen by the user',
    PRIMARY KEY (`userid`),
+   KEY (`name`),
    FOREIGN KEY (`groupid`) REFERENCES `user_groups`(`groupid`)
 );
 --
@@ -25,7 +29,7 @@ CREATE TABLE `comments` (
    `userid` INT NOT NULL,
    `comment` TEXT DEFAULT NULL,
    PRIMARY KEY (`commentid`),
-   FOREIGN KEY (`userid`) REFERENCES `user`(`userid`)
+   FOREIGN KEY (`userid`) REFERENCES `users`(`userid`)
 );
 --
 INSERT INTO `user_groups`
@@ -33,7 +37,7 @@ INSERT INTO `user_groups`
 VALUES
 (1, 'Dev');
 --
-INSERT INTO `user`
+INSERT INTO `users`
 (`userid`, `groupid`, `name`)
 VALUES
 (1, 1, 'Chris');
@@ -45,5 +49,6 @@ VALUES
 --
 -- SELECT `name`, `group_name`, `comment`
 -- FROM `comments`
--- JOIN `user` USING (`userid`)
+-- JOIN `users` USING (`userid`)
 -- JOIN `user_groups` USING (`groupid`);
+

@@ -2,13 +2,9 @@
 
 namespace Pages;
 
-use DB\PageIndex;
-use HtmlFramework\Article as HtmlArticle;
 use HtmlFramework\Body as HtmlBody;
-use HtmlFramework\Footer as HtmlFooter;
 use HtmlFramework\Head as HtmlHead;
 use HtmlFramework\Header as HtmlHeader;
-use HtmlFramework\Nav as HtmlNav;
 use HtmlFramework\Root as HtmlRoot;
 use HtmlFramework\Section as HtmlSection;
 use Pages\InvalidPageException;

@@ -2,7 +2,6 @@
 
 namespace HtmlFramework\Packet;
 
-use DB\PageIndex;
 use HtmlFramework\Packet\PacketTrait;
 
 class HeadPacket {
