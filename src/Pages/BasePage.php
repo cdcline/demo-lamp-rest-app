@@ -10,6 +10,8 @@ use HtmlFramework\Section as HtmlSection;
 use Pages\InvalidPageException;
 
 abstract class BasePage {
+   protected const HEADER_TEMPLATE = 'default_header.phtml';
+
    private const TEMPLATE_PATH = 'src/templates';
    private $ranHTMLPrint = false;
    private $pageData = [];
@@ -31,11 +33,19 @@ abstract class BasePage {
    public function printHtml(): void {
       $this->ranHTMLPrint = true;
       $htmlHead = HtmlHead::fromValues($this->getPageTitle());
-      $htmlSectionHeader = HtmlHeader::fromValues();
+      $htmlSectionHeader = HtmlHeader::fromValues($this->getPageTitle(), $this->getPageHeaderPath());
       $htmlSection = HtmlSection::fromValues($this->getPageTemplatePath());
       $htmlBody = HtmlBody::fromValues($htmlSectionHeader, $htmlSection);
       $htmlRoot = HtmlRoot::fromValues($htmlHead, $htmlBody);
       $htmlRoot->printHtml();
+   }
+
+   protected function getPageHeaderName(): string {
+      return self::HEADER_TEMPLATE;
+   }
+
+   private function getPageHeaderPath(): string {
+      return self::TEMPLATE_PATH . "/{$this->getPageHeaderName()}";
    }
 
    private function getPageTemplatePath(): string {

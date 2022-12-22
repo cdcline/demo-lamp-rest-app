@@ -6,8 +6,8 @@ use DB\UserComment;
 use Pages\BasePage;
 use Utils\ServerUtils;
 
-final class DevPage extends BasePage {
-   private const PAGE_TEMPLATE = 'dev.phtml';
+final class CommentsPage extends BasePage {
+   private const PAGE_TEMPLATE = 'comments.phtml';
 
    public function doStuff(): void {
       if ($_POST) {
@@ -21,7 +21,8 @@ final class DevPage extends BasePage {
       return self::PAGE_TEMPLATE;
    }
 
+
    protected function getPageTitle(): string {
-      return 'Dev Page';
+      return 'User Comments';
    }
 }

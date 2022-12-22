@@ -3,7 +3,7 @@
 namespace Utils;
 
 use Pages\BasePage;
-use Pages\DevPage;
+use Pages\CommentsPage;
 
 class SiteRunner {
    private static $slug;
@@ -29,7 +29,7 @@ class SiteRunner {
    private static function getPageFromSlug(string $slug): BasePage {
       switch($slug) {
          default:
-            return new DevPage();
+            return new CommentsPage();
       }
    }
 }
