@@ -1,0 +1,13 @@
+{
+   "autoload": {
+      "psr-4": {
+         "DB\\": "src/DB",
+         "HtmlFramework\\": "src/HtmlFramework",
+         "Pages\\": "src/Pages",
+         "Utils\\": "src/Utils"
+      }
+   },
+   "require": {
+      "php": ">=8.1"
+   }
+}
