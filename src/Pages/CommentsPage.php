@@ -13,7 +13,6 @@ final class CommentsPage extends BasePage {
       if ($_POST) {
          UserComment::saveCommentFromPost();
          ServerUtils::reloadPage();
-         die();
       }
    }
 

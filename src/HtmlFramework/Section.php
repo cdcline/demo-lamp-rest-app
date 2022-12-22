@@ -44,4 +44,16 @@ class Section extends HtmlElement {
          'rows' => $comments
       ]);
    }
+
+   protected function getUsersTableHTML(): string {
+      $users = $this->packet->getAllUsers();
+      if (!$users) {
+         return '';
+      }
+
+      return HtmlUtils::makeTableElement([
+         'header' => array_keys($users[0]),
+         'rows' => $users
+      ]);
+   }
 }

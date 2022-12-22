@@ -1,0 +1,11 @@
+<?= $this->getUsersTableHTML() ?>
+
+<form method="POST" autocomplete="off">
+   <input name="user[name]" type="text" placeholder="name" />
+   <select name="user[groupid]">
+      <?php foreach ($this->packet->getAllGroups() as $groupInfo) : ?>
+         <option value="<?= $groupInfo['groupid'] ?>"><?= $groupInfo['group_name'] ?></option>
+      <?php endforeach ?>
+   </select>
+   <input type="submit" value="Add User" />
+</form>

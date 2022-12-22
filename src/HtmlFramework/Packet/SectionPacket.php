@@ -2,7 +2,9 @@
 
 namespace HtmlFramework\Packet;
 
+use DB\User;
 use DB\UserComment;
+use DB\UserGroup;
 use HtmlFramework\Packet\PacketTrait;
 
 class SectionPacket {
@@ -14,5 +16,13 @@ class SectionPacket {
 
    public function getAllComments(): array {
       return UserComment::fetchAllComments();
+   }
+
+   public function getAllUsers(): array {
+      return User::fetchAllUsers();
+   }
+
+   public function getAllGroups(): array {
+      return UserGroup::fetchAllGroups();
    }
 }

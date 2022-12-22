@@ -4,6 +4,7 @@ namespace Utils;
 
 use Pages\BasePage;
 use Pages\CommentsPage;
+use Pages\UsersPage;
 
 class SiteRunner {
    private static $slug;
@@ -27,7 +28,9 @@ class SiteRunner {
    }
 
    private static function getPageFromSlug(string $slug): BasePage {
-      switch($slug) {
+      switch(strtolower($slug)) {
+         case 'users':
+            return new UsersPage();
          default:
             return new CommentsPage();
       }

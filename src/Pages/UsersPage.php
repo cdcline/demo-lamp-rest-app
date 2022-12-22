@@ -2,17 +2,17 @@
 
 namespace Pages;
 
-use DB\UserComment;
+use DB\User;
 use Pages\BasePage;
 use Utils\ServerUtils;
 
-final class CommentsPage extends BasePage {
+final class UsersPage extends BasePage {
    private const PAGE_TEMPLATE = 'users.phtml';
 
    public function doStuff(): void {
       if ($_POST) {
-         echo 'foo';
-         die();
+         User::saveUserFromPost();
+         ServerUtils::reloadPage();
       }
    }
 
